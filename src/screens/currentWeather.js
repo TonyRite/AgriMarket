@@ -1,24 +1,21 @@
 import React from "react";
 import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/Feather';
+import RowText from "../components/Rowtext";
+import { weatherType } from "../utilities/weatherType";
 
 const CurrentWeather = () => {
+  // const {wrapper ,container,temp,highLowWrapper} = styles
+  // destrycturing styles ,not  a must but increases readability
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.container}>
-      <Icon name="sun" size={100} color="black" />
+        <Icon name="sun" size={100} color="black" />
         <Text style={styles.temp}>6</Text>
         <Text style={styles.feels}>Feels like 5</Text>
-        <View style={styles.highLowWrapper}>
-        <Text style={styles.highLow}>High : 8 </Text>
-        <Text style={styles.highLow}>Low: 6</Text>
-        </View>
-        </View>
-        <View style={styles.bodyWrapper}>
-        <Text style={styles.description}>Its sunny</Text>
-        <Text style={styles.message}>Its perfect t-shirt weather</Text>
-        </View>
-      
+        <RowText messageOne={'high: 8'} messageTwo={'Low: 6'} containerStyles={styles.highLowWrapper} messageOneStyles={styles.highLow} messageTwoStyles={styles.highLow} />
+      </View>
+      <RowText messageOne={'Its sunny'} messageTwo={weatherType['Thudnerstorm'].message} containerStyles={styles.bodyWrapper} messageOneStyles={styles.description} messageTwoStyles={styles.message} />
     </SafeAreaView>
 
   )
@@ -31,34 +28,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent:'center'
+    justifyContent: 'center'
   },
-  temp:{
-    color:'black',
-    fontSize:48
+  temp: {
+    color: 'black',
+    fontSize: 48
   },
-  feels:{
-    fontSize:30,
-    color:'black'
+  feels: {
+    fontSize: 30,
+    color: 'black'
   },
-  highLow:{
-    color:'black',
-    fontSize:20
+  highLow: {
+    color: 'black',
+    fontSize: 20
   },
-  highLowWrapper:{
-    flexDirection:'row'
+  highLowWrapper: {
+    flexDirection: 'row'
   },
-  bodyWrapper:{
-    justifyContent:'flex-end',
-    alignItems:'flex-start',
-    paddingLeft:25,
+  bodyWrapper: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    paddingLeft: 25,
     marginBottom: 40
   },
-  description:{
-    fontSize:48
+  description: {
+    fontSize: 48
   },
-  message:{
-    fontSize:30
+  message: {
+    fontSize: 30
   }
 })
 export default CurrentWeather
